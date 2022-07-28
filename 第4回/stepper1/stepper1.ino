@@ -1,0 +1,39 @@
+#define STPM_Y  11  // ステッパーのA相ピン
+#define STPM_R  10  // ステッパーの~A相ピン
+#define STPM_B  6   // ステッパーのB相ピン
+#define STPM_O  5   // ステッパーの~B相ピン
+
+void setup(){
+  pinMode(STPM_Y, OUTPUT);
+  pinMode(STPM_R, OUTPUT);
+  pinMode(STPM_B, OUTPUT);
+  pinMode(STPM_O, OUTPUT);
+}
+
+void loop(){
+  int wait = 10;      // 待機時間
+  // A相励磁
+  digitalWrite(STPM_Y, HIGH);
+  digitalWrite(STPM_R, LOW);
+  digitalWrite(STPM_B, HIGH);
+  digitalWrite(STPM_O, HIGH);
+  delay(wait);
+  // B相励磁
+  digitalWrite(STPM_Y, HIGH);
+  digitalWrite(STPM_R, HIGH);
+  digitalWrite(STPM_B, HIGH);
+  digitalWrite(STPM_O, LOW);
+  delay(wait);
+  // ~A相励磁
+  digitalWrite(STPM_Y, LOW);
+  digitalWrite(STPM_R, HIGH);
+  digitalWrite(STPM_B, HIGH);
+  digitalWrite(STPM_O, HIGH);
+  delay(wait);
+  // ~B相励磁
+  digitalWrite(STPM_Y, HIGH);
+  digitalWrite(STPM_R, HIGH);
+  digitalWrite(STPM_B, LOW);
+  digitalWrite(STPM_O, HIGH);
+  delay(wait);
+}
