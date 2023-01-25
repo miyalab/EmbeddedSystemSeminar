@@ -24,9 +24,13 @@ void loop()
 
     // 落下検出
     unsigned long time = millis();
-    if(anaglogRead(ACCELE_Z_PIN) < 250) fallFlag = 1;
-    else if(analogRead(ACCELE_Z_PIN) > 750) fallFlag = 0;
-
+    if(anaglogRead(ACCELE_Z_PIN) < 250) {
+        startTime = time;
+        fallFlag = 1;
+    }
+    else if(analogRead(ACCELE_Z_PIN) > 750){
+        fallFlag = 0;
+    }
     // 1000ms -> 1s以上落下
     if(fallFlag * time - startTime > 1000){
         fallFlag = motorFlag = 0;
