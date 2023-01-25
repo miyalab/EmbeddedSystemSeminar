@@ -10,8 +10,7 @@ void setup(){
   Serial.print(",");
   Serial.print("ACCELE_Y");
   Serial.print(",");
-  Serial.print("ACCELE_Z");
-  Serial.println();
+  Serial.println("ACCELE_Z");
 }
 
 void loop(){
